@@ -1,0 +1,24 @@
+{
+  "id": "puppes-pf1e-downtime",
+  "title": "PF1E Optional Downtime Rules",
+  "description": "Modifies Ethck's Downtime Tracking",
+  "authors":[
+    {
+      "name": "Puppe"
+    }
+  ],
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "relationships":{
+    "systems":[{
+      "id": "pf1",
+      "type": "system",
+    }]
+  },
+  "esmodules":[
+    "scripts/module.js"
+  ]
+}
