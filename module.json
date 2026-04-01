@@ -15,10 +15,10 @@
   "relationships":{
     "systems":[{
       "id": "pf1",
-      "type": "system",
+      "type": "system"
     }]
   },
   "esmodules":[
-    "scripts/module.js"
+    "dist/module.js"
   ]
 }

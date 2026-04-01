@@ -1,5 +1,6 @@
 Hooks.once("init", () => {
-  game.settings.register("puppes-pf1e-downtime", "showDowntime", {
+  if(!game.settings) return;
+  game.settings.register("puppes-pf1e-downtime" as any, "showDowntime" as any, {
     name: "Show downtime tab",
     hint: "Makes downtime tab on character sheets",
     scope: "world",
@@ -9,6 +10,6 @@ Hooks.once("init", () => {
   });
 
 });
-Hooks.once("ready", function(){
+Hooks.once("ready", () => {
   console.log("I am a loaded module");
 });
