@@ -1,17 +1,43 @@
+function getSetting(key) {
+    return game.settings.get("puppes-pf1e-downtime", key);
+}
+function registerSetting(key, data) {
+    game.settings.register("puppes-pf1e-downtime", key, data);
+}
 Hooks.once("init", () => {
     if (!game.settings)
         return;
-    game.settings.register("puppes-pf1e-downtime", "showDowntime", {
+    const downtimeSetting = {
         name: "Show downtime tab",
         hint: "Makes downtime tab on character sheets",
         scope: "world",
         config: true,
         type: Boolean,
         default: true,
-    });
+    };
+    registerSetting("showDowntime", downtimeSetting);
 });
 Hooks.once("ready", () => {
     console.log("I am a loaded module");
+});
+Hooks.on("renderActorSheetPFCharacter", (app, html, data) => {
+    if (!game.settings)
+        return;
+    let showDowntimeTab = getSetting("showDowntime");
+    if (showDowntimeTab) {
+        let downtimeBtn = '<a class="item" data-tab="downtime>Downtime"</a>';
+        let tabs = html.querySelector('.tabs[data-group="primary"]');
+        if (!tabs)
+            return;
+        if (!tabs.querySelector('.item[data-tab="downtime"]')) {
+            tabs.insertAdjacentHTML("beforeend", downtimeBtn);
+        }
+        let downtimeTab = '<div class="tab downtime flexcol" data-tab="downtime"><section class="downtime-body"><p>It works</p></section></div>';
+        const body = html.querySelector(".primary-body");
+        if (!body)
+            return;
+        body.insertAdjacentHTML("beforeend", downtimeTab);
+    }
 });
 export {};
 //# sourceMappingURL=module.js.map
