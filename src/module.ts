@@ -22,20 +22,20 @@ Hooks.once("init", () => {
 Hooks.once("ready", () => {
   console.log("I am a loaded module");
 });
-
-Hooks.on("renderActorSheetPFCharacter" as any,  (app:any, html:HTMLElement, data:any) => {
+Hooks.on("renderActorSheetPFCharacter" as "renderActorSheet",   (app:ActorSheet, html:JQuery, data:object) => {
   if(!game.settings) return;
   let showDowntimeTab = getSetting("showDowntime");
   if(showDowntimeTab) {
-    let downtimeBtn = '<a class="item" data-tab="downtime>Downtime"</a>'
-    let tabs = html.querySelector('.tabs[data-group="primary"]');
+    let element = html[0];
+    let downtimeBtn = '<a class="item" data-tab="downtime">Downtime</a>'
+    let tabs = element.querySelector('.tabs[data-group="primary"]');
     if (!tabs) return;
     if(!tabs.querySelector('.item[data-tab="downtime"]')){
       tabs.insertAdjacentHTML("beforeend", downtimeBtn);
     }
     let downtimeTab = '<div class="tab downtime flexcol" data-tab="downtime"><section class="downtime-body"><p>It works</p></section></div>';
 
-    const body = html.querySelector(".primary-body");
+    const body = element.querySelector(".primary-body");
     if(!body) return;
     body.insertAdjacentHTML("beforeend", downtimeTab);
   }
