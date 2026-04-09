@@ -10,7 +10,7 @@ Hooks.once("init", () => {
   if(!game.settings) return;
   const downtimeSetting = {
     name: "Show downtime tab",
-    hint: "Makes downtime tab on character sheets",
+    hint: "Makes downtime tab visible on character sheets",
     scope: "world",
     config: true,
     type: Boolean,
