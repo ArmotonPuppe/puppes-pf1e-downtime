@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    "strict": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "types": ["@league-of-foundry-developers/foundry-vtt-types"]
+  },
+
+  "references": [{ "path": "./pf1/" }],
+
+  "include": [
+    "src/**/*",
+    "pf1/**/*.d.ts"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "dist",
+    "pf1/dist/",
+    "pf1/foundry/",
+    "pf1/node_modules"
+  ]
+}
